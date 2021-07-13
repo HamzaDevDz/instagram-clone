@@ -1,0 +1,21 @@
+.post{
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border: 1px solid lightgrey;
+}
+.post__img{
+    width: 100%;
+    margin: 5px 0;
+}
+.post__avatarUsername{
+    display: flex;
+    align-items: center;
+}
+.post__username{
+    font-weight: bolder;
+    margin-left: 10px;
+}
