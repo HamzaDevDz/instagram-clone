@@ -1,0 +1,10 @@
+.header{
+    background-color: #FAFAFA;
+    border-bottom: 1px solid lightgrey;
+    padding: 10px;
+    height: 50px;
+}
+.header__img{
+    object-fit: contain;
+    height: 100%;
+}
