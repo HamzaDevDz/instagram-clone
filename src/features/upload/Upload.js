@@ -51,7 +51,8 @@ export const Upload = () => {
                             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
                             username: user.displayName,
                             caption: caption,
-                            imageURL: url
+                            imageURL: url,
+                            comments: []
                         })
                         setCaption('')
                         setProgress(0)
@@ -66,7 +67,7 @@ export const Upload = () => {
             <Card className={'upload'}>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                        Sorry, we need to log in.
+                        Sorry, you need to log in.
                     </Typography>
                 </CardContent>
             </Card>
@@ -84,7 +85,6 @@ export const Upload = () => {
                             Upload Image
                         </Button>
                     </label>
-                    {/*<CircularProgressWithLabel value={progress} />*/}
                     <LinearProgress className={'upload__img__progressBar'} value={progress}
                                     variant="determinate"
                     />
@@ -96,7 +96,7 @@ export const Upload = () => {
                     value={caption}
                     onChange={e=>setCaption(e.target.value)}
                 />
-                <Button type={'submit'} className={'upload__btn'} variant="contained" onClick={handleUpload}>Post</Button>
+                <Button disabled={!caption} type={'submit'} className={'upload__btn'} variant="contained" onClick={handleUpload}>Post</Button>
             </form>
     )
 }

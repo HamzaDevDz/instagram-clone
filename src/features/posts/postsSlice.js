@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
 
-
 const initialState = {
     posts: []
 }
@@ -9,8 +8,8 @@ export const postsSlice = createSlice({
     name: 'posts',
     initialState,
     reducers: {
-        addPost: (state, action) => {
-            state.posts.push(action.payload)
+        setPosts: (state, action) => {
+            state.posts = action.payload
         }
     },
     extraReducers: {
@@ -18,7 +17,7 @@ export const postsSlice = createSlice({
     }
 })
 
-export const { addPost } = postsSlice.actions;
+export const { setPosts } = postsSlice.actions;
 
 export const selectPosts = state => state.posts.posts
 
