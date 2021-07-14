@@ -13,6 +13,9 @@ export const userSlice = createSlice({
         fetchUser: (state, action) => {
             state.user = action.payload
         },
+        logOut: (state) => {
+            state.user = undefined
+        },
         showSignIn: (state) => {
             state.openSignIn = true
         },
@@ -29,7 +32,7 @@ export const userSlice = createSlice({
     extraReducers: {}
 })
 
-export const { fetchUser, showSignIn, hideSignIn, showSignUp,  hideSignUp} = userSlice.actions;
+export const { fetchUser, showSignIn, hideSignIn, showSignUp,  hideSignUp, logOut} = userSlice.actions;
 
 export const selectUser = state => state.user.user
 export const selectOpenSingIn = state => state.user.openSignIn

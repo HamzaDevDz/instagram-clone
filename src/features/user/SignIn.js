@@ -4,6 +4,7 @@ import { TextField } from '@material-ui/core';
 import {useDispatch, useSelector} from "react-redux";
 import {hideSignIn, selectOpenSingIn} from "./userSlice";
 import Button from "@material-ui/core/Button";
+import {auth} from "../firebase/Firebase";
 
 export const SignIn = () => {
     const openSignIn = useSelector(selectOpenSingIn)
@@ -28,6 +29,16 @@ export const SignIn = () => {
         }
     },[openSignIn])
 
+    const signIn = () => {
+        auth.signInWithEmailAndPassword(email, password)
+            .catch((error) => alert(error.message))
+            .then(()=>{
+                setEmail('')
+                setPassword('')
+                dispatch(hideSignIn())
+            })
+    }
+
     return(
         <div className={'user signIn'} onClick={(event)=>{
             event.preventDefault();
@@ -45,8 +56,10 @@ export const SignIn = () => {
                            value={password}
                            onChange={e=>setPassword(e.target.value)}
                 />
-                <Button type={'submit'} className={'user__form__btn'} variant="contained">
-                    Valid
+                <Button type={'submit'} className={'user__form__btn'} variant="contained"
+                        onClick={signIn}
+                >
+                    Sign In
                 </Button>
             </form>
         </div>

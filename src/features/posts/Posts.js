@@ -16,7 +16,7 @@ export const Posts = () => {
             .collection('posts')
             .orderBy('timestamp', 'desc')
             .onSnapshot(
-                snapshot => { snapshot.docs.forEach(doc => (dispatch(addPost({ id: doc.id, post: doc.data() })))) },
+                snapshot => { snapshot.docs.map(doc => (dispatch(addPost({ id: doc.id, post: doc.data() })))) },
                 error => { console.log(error) },
             );
     }, [])

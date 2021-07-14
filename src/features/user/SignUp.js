@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react'
 import "./User.css"
 import {useDispatch, useSelector} from "react-redux";
-import {hideSignUp, selectOpenSignUp} from "./userSlice";
+import {fetchUser, hideSignUp, logOut, selectOpenSignUp, selectUser} from "./userSlice";
 import {TextField} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import {auth} from "../firebase/Firebase";
 
 export const SignUp = () => {
     const openSignUp = useSelector(selectOpenSignUp)
@@ -11,6 +12,7 @@ export const SignUp = () => {
     const [email, setEmail] = useState('')
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const user = useSelector(selectUser)
     useEffect(() => {
         const signUp = document.querySelector('.signUp')
         if(openSignUp){
@@ -27,7 +29,40 @@ export const SignUp = () => {
                 signUp.style.display = 'none'
             }, 300)
         }
+
     },[openSignUp])
+
+    useEffect(()=>{
+        // AUTHENTIFICATION LISTNER
+        const unsubsribe = auth.onAuthStateChanged((authUser) => {
+            if(authUser){
+                //    User has logged in
+                dispatch(fetchUser(authUser))
+            }
+            else{
+                //    User has logged out
+                dispatch(logOut())
+            }
+        })
+        return () => {
+            // perform some cleanup actions
+            unsubsribe()
+        }
+    }, [user, username])
+    const signUp = (event) => {
+        auth.createUserWithEmailAndPassword(email, password)
+            .catch((error) => alert(error.message))
+            .then((authUser)=>{
+                setUsername('')
+                setEmail('')
+                setPassword('')
+                dispatch(hideSignUp())
+                return authUser.user.updateProfile({
+                    displayName: username
+                })
+            })
+    }
+
     return(
         <div className={'user signUp'} onClick={(event)=>{
             event.preventDefault();
@@ -49,8 +84,10 @@ export const SignUp = () => {
                            value={password}
                            onChange={e=>setPassword(e.target.value)}
                 />
-                <Button type={'submit'} className={'user__form__btn'} variant="contained">
-                    Valid
+                <Button type={'submit'} className={'user__form__btn'} variant="contained"
+                        onClick={signUp}
+                >
+                    Sign Up
                 </Button>
             </form>
         </div>

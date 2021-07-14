@@ -4,6 +4,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {selectUser, showSignUp} from "../user/userSlice";
 import Button from "@material-ui/core/Button"
 import {showSignIn} from "../user/userSlice";
+import {auth} from "../firebase/Firebase";
+
 
 export const Header = () => {
     const user = useSelector(selectUser)
@@ -18,7 +20,7 @@ export const Header = () => {
                 </div>
                 :
                 <div className={'header__user'}>
-                    <Button>Log Out</Button>
+                    <Button onClick={()=>auth.signOut()}>Log Out</Button>
                 </div>
             }
         </div>
