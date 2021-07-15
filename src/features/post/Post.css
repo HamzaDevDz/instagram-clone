@@ -1,7 +1,7 @@
 .post{
     display: flex;
     flex-direction: column;
-    max-width: 500px;
+    width: 500px;
     padding: 10px 0;
     margin-bottom: 20px;
     background-color: white;
@@ -45,7 +45,7 @@
 
 /*------------------------------------------------ RESPONSIVE -----------------------------*/
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 500px) {
     .post {
         width: 100vw;
     }

@@ -64,13 +64,9 @@ export const Upload = () => {
     }
     return(
         user === undefined ?
-            <Card className={'upload'}>
-                <CardContent>
-                    <Typography variant="h5" component="h2">
-                        Sorry, you need to log in.
-                    </Typography>
-                </CardContent>
-            </Card>
+            <h3 className={'upload sorry'}>
+                Sorry, you need to login to post.
+            </h3>
             :
             <form className={'upload'}>
                 <div className={'upload__img'}>

@@ -27,3 +27,16 @@
 .uploading{
     pointer-events: none;
 }
+.sorry{
+    background-color: white;
+    border: 1px solid lightgrey;
+    padding: 10px 0;
+}
+
+/*------------------------------------------------ RESPONSIVE -----------------------------*/
+
+@media screen and (max-width: 500px) {
+    .upload {
+        width: 100vw;
+    }
+}

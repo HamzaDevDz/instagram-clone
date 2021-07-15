@@ -57,3 +57,14 @@
     margin-bottom: 10px !important;
     width: 200px;
 }
+
+/*------------------------------------------------ RESPONSIVE -----------------------------*/
+
+@media screen and (max-width: 500px) {
+    .user__form {
+        width: 80%;
+    }
+    .user__form__btn{
+        width: 50%;
+    }
+}
