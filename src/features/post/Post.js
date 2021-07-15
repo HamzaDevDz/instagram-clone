@@ -1,4 +1,4 @@
-import React, {forwardRef, useState} from "react"
+import React, {useState} from "react"
 import './Post.css'
 import {Avatar} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
