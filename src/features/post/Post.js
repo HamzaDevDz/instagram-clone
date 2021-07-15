@@ -50,7 +50,7 @@ export const Post = ({refDoc, username, imageURL, caption, comments}) => {
                     />
                     <Button className={'post__uploadComment__btn'}
                             onClick={handleUploadComment}
-                            variant={'contained'}
+                            // variant={'contained'}
                             disabled={!comment}
                             type={'submit'}
                     >Post</Button>

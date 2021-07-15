@@ -42,3 +42,11 @@
 .post__uploadComment__btn{
     width: 150px;
 }
+
+/*------------------------------------------------ RESPONSIVE -----------------------------*/
+
+@media screen and (max-width: 700px) {
+    .post {
+        width: 100vw;
+    }
+}
