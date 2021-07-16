@@ -1,41 +1,28 @@
 import React from "react"
-import './header.css'
-import AnchorLink from "react-anchor-link-smooth-scroll";
-import {Fade} from "react-reveal";
+import './Header.css'
+import {useDispatch, useSelector} from "react-redux";
+import {selectUser, showSignUp} from "../user/userSlice";
+import Button from "@material-ui/core/Button"
+import {showSignIn} from "../user/userSlice";
+import {auth} from "../firebase/Firebase";
+
 
 export const Header = () => {
-
+    const user = useSelector(selectUser)
+    const dispatch = useDispatch()
     return(
-        <div id={'header'} className={'header'}>
-
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-            <span className={'star'}></span>
-
-            <Fade cascade top >
-                <p className={'description'}>
-                    Hello, I'm <span>Hamza</span> <br/>
-                    I'm a front-end web developer
-                </p>
-                <AnchorLink href={'#projects'} className={'view-my-work-btn'}>
-                    <p className={'text'}>
-                        View my work
-                    </p>
-                    <span className={'arrow'}>
-                    &#8594;
-                </span>
-                </AnchorLink>
-            </Fade>
-
+        <div className={'header'}>
+            <img className={'header__img'} src={'images/instagram.png'} alt={''} />
+            {user === undefined?
+                <div className={'header__user'}>
+                    <Button onClick={()=>dispatch(showSignIn())}>Sing In</Button>
+                    <Button onClick={()=>dispatch(showSignUp())}>Sing Up</Button>
+                </div>
+                :
+                <div className={'header__user'}>
+                    <Button onClick={()=>auth.signOut()}>Log Out</Button>
+                </div>
+            }
         </div>
     )
 }
