@@ -1,21 +1,21 @@
 import React from 'react';
 import './App.css';
 import {Header} from "./features/header/Header";
-import {Posts} from "./features/posts/Posts";
-import {SignIn} from "./features/user/SignIn";
-import {SignUp} from "./features/user/SignUp";
-import {Upload} from "./features/upload/Upload";
+import {About} from "./features/about/About";
+import {Projects} from "./features/projects/Projects";
+import {Contact} from "./features/contact/Contact";
+import {NavBar} from "./features/navBar/NavBar";
 
 function App() {
   return (
     <div className="app">
       <Header />
-      <Upload />
-      <Posts />
-      <SignIn />
-      <SignUp />
+      <NavBar />
+      <About />
+      <Projects />
+      <Contact />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

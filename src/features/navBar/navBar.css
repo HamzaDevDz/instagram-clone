@@ -1,0 +1,44 @@
+.navBar{
+    background-color: #1B242F;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 0;
+    width: 100%;
+    z-index: 3;
+}
+.navBar__anchors{
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.navBar__anchor{
+    transition: 0.5s;
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+.navBar__anchor:hover{
+    color: #E31B6D !important;
+    cursor: pointer;
+}
+.floating{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+}
+.into{
+    color: #E31B6D !important;
+}
+
+/*------------------------------------------------ RESPONSIVE -----------------------------*/
+@media screen and (max-width: 700px) {
+    .navBar__anchors{
+        width: 100%;
+    }
+    .navBar__anchor{
+        font-size: 0.8rem;
+    }
+}
